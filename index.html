@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>WebAR Mô Hình Chim theo GPS - AR.js</title>
+    <title>WebAR Mô Hình Chim GPS - Tọa độ mới & Bù sai số</title>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-look-controls.js"></script>
   </head>
@@ -20,19 +20,23 @@
       </a-assets>
       
       <a-entity 
-        gps-entity-place="latitude: 10.421500; longitude: 105.643072;"
+        gps-entity-place="latitude: 10.421070; longitude: 105.643147;"
         position="0 0 0"
         rotation="0 0 0">
         
         <a-obj-model  
           src="#bird-obj"  
           mtl="#bird-mtl"  
-          scale="0.5 0.5 0.5">
+          scale="5.0 5.0 5.0">
         </a-obj-model>
 
       </a-entity>
       
-      <a-entity camera gps-camera rotation-reader></a-entity>
+      <a-entity 
+        camera 
+        gps-camera="gpsMinDistance: 1; maxDistance: 155;" 
+        rotation-reader>
+      </a-entity>
       
     </a-scene>
   </body>
