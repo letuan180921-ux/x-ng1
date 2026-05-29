@@ -2,33 +2,37 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>WebAR Mô Hình Chim - AR.js</title>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>WebAR Mô Hình Chim theo GPS - AR.js</title>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-look-controls.js"></script>
   </head>
   <body style="margin: 0px; overflow: hidden;">
     
-    <a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false;">
+    <a-scene 
+      embedded 
+      vr-mode-ui="enabled: false" 
+      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">
       
       <a-assets>
         <a-asset-item id="bird-obj" src="./assets/12700_RibCage_v2.obj"></a-asset-item>
         <a-asset-item id="bird-mtl" src="./assets/Blank.mtl"></a-asset-item>
       </a-assets>
       
-      <a-marker preset="hiro">
+      <a-entity 
+        gps-entity-place="latitude: 10.421500; longitude: 105.643072;"
+        position="0 0 0"
+        rotation="0 0 0">
         
-        <a-obj-model 
-          src="#bird-obj" 
-          mtl="#bird-mtl" 
-          position="0 0 0" 
-          scale="0.05 0.05 0.05" 
-          rotation="-90 0 0">
+        <a-obj-model  
+          src="#bird-obj"  
+          mtl="#bird-mtl"  
+          scale="0.5 0.5 0.5">
         </a-obj-model>
 
-      </a-marker>
+      </a-entity>
       
-      <a-entity camera></a-entity>
+      <a-entity camera gps-camera rotation-reader></a-entity>
       
     </a-scene>
   </body>
