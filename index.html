@@ -1,43 +1,58 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <title>WebAR Mô Hình Chim GPS - Sai số 100m</title>
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-look-controls.js"></script>
-  </head>
-  <body style="margin: 0px; overflow: hidden;">
-    
-    <a-scene 
-      embedded 
-      vr-mode-ui="enabled: false" 
-      arjs="sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;">
-      
-      <a-assets>
-        <a-asset-item id="bird-obj" src="./assets/12700_RibCage_v2.obj"></a-asset-item>
-        <a-asset-item id="bird-mtl" src="./assets/Blank.mtl"></a-asset-item>
-      </a-assets>
-      
-      <a-entity 
-        gps-entity-place="latitude: 10.421070; longitude: 105.643147;"
-        position="0 5 0"
-        rotation="0 0 0">
-        
-        <a-obj-model  
-          src="#bird-obj"  
-          mtl="#bird-mtl"  
-          scale="5.0 5.0 5.0">
-        </a-obj-model>
+<!DOCTYP<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
 
-      </a-entity>
-      
-      <a-entity 
-        camera 
-        gps-camera="gpsMinDistance: 1; maxDistance: 150;" 
-        rotation-reader>
-      </a-entity>
-      
-    </a-scene>
-  </body>
+  <title>WebAR Mô Hình Chim - AR.js</title>
+
+  <!-- A-Frame -->
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+  <!-- AR.js -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+</head>
+
+<body style="margin:0; overflow:hidden;">
+
+  <a-scene
+    embedded
+    arjs="sourceType: webcam; debugUIEnabled: false;"
+    vr-mode-ui="enabled: false"
+  >
+
+    <!-- Tài nguyên mô hình -->
+    <a-assets>
+      <a-asset-item
+        id="bird-obj"
+        src="./assets/12700_RibCage_v2.obj">
+      </a-asset-item>
+
+      <a-asset-item
+        id="bird-mtl"
+        src="./assets/Blank.mtl">
+      </a-asset-item>
+    </a-assets>
+
+    <!-- Marker Hiro -->
+    <a-marker preset="hiro">
+
+      <!-- Mô hình 3D -->
+      <a-obj-model
+        src="#bird-obj"
+        mtl="#bird-mtl"
+        position="0 0 0"
+        rotation="-90 0 0"
+        scale="0.05 0.05 0.05">
+      </a-obj-model>
+
+    </a-marker>
+
+    <!-- Camera -->
+    <a-entity camera></a-entity>
+
+  </a-scene>
+
+</body>
 </html>
